@@ -6,12 +6,12 @@ import-module az.desktopvirtualization
 import-module az.network
 import-module az.compute
 
-$azureSubscriptionID = "your-wvd-sub-id"
-$resourceGroupName = "rg-wvd-Pooled-desktop"
-$existingWVDHostPoolName = "HostPool-Test"
+$azureSubscriptionID = "9e71baee-a82d-40a7-bfaa-dcf6ea7331a1"
+$resourceGroupName = "ncwvd-pool05-rg"
+$existingWVDHostPoolName = "ncwvd-pool05"
 
 
-#Obtain RdsRegistrationInfotoken
+# Obtain RdsRegistrationInfotoken
 
 $Registered = Get-AzWvdRegistrationInfo -SubscriptionId "$azureSubscriptionID" -ResourceGroupName "$resourceGroupName" -HostPoolName $existingWVDHostPoolName
 if (-not(-Not $Registered.Token)){$registrationTokenValidFor = (NEW-TIMESPAN -Start (get-date) -End $Registered.ExpirationTime | select Days,Hours,Minutes,Seconds)}
